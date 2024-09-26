@@ -1,0 +1,9 @@
+import React from 'react'
+
+export const Footer = () => {
+  return (
+    <footer className='w-full h-16 flex justify-center items-center md:justify-start bg-[#3A393E] md:px-[2vw]'>
+      <p className='text-[12px] text-primary'>© 2022 Digital Money House</p>
+    </footer>
+  )
+}
