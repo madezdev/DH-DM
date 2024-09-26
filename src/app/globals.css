@@ -1,27 +1,69 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  min-width: 0;
+  font: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  text-rendering: optimizeSpeed;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.heading-1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.heading-2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.heading-3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.heading-4 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.botton-1 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.botton-2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.text-1 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.text-2 {
+  font-size: 12px;
+  font-weight: 400;
 }

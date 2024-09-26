@@ -9,9 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: '#0AEB8C',
+        secondary: '#052A2D',
+        bgSecundary: '#151817',
+        bgPrimary: '#D2FFEC',
+        error: '#E91010',
+        disable: '#CECECE'
       },
+      fontFamily: {
+        body: ['Roboto', 'sans-serif']
+      }
     },
   },
   plugins: [],
