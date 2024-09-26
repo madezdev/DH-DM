@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Card, Footer, Navbar } from '@/components'
+import { cardLandoPage } from '@/utils/landingPage'
 
 export default function HomePage() {
   return (
@@ -36,14 +37,9 @@ export default function HomePage() {
         </article>
         <article className='bg-primary w-full h-[280px] md:h-[430px] xl:h-[148px] rounded-t-3xl relative'>
           <div className='px-[4vw] md:px-[14vw] xl:px-0 absolute left-0 -top-16 md:-top-20 xl:-top-32 flex flex-col xl:flex-row xl:justify-center gap-4 xl:gap-8 w-full'>
-            <Card
-              title='Transferí dinero'
-              description='Desde Digital Money House vas a poder transferir dinero a otras cuentas, así como también recibir transferencias y nuclear tu capital en nuestra billetera virtual.'
-            />
-            <Card
-              title='Pago de servicios'
-              description='Pagá mensualmente los servicios en 3 simples clicks. Fácil, rápido y conveniente. Olvidate de las facturas en papel.'
-            />
+            {cardLandoPage.map((card, index) => {
+              return <Card key={index} title={card.title} description={card.description} />
+            })}
           </div>
         </article>
       </div>
