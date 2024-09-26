@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={roboto.className}>{children}</body>
+      <body className={`h-[100dvh] w-screen overflow-x-auto ${roboto.className}`}>{children}</body>
     </html>
   )
 }
