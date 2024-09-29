@@ -32,14 +32,14 @@ export const Navbar = ({ session }: Props) => {
       </Link>
       {session === 'landing' && (
         <div className='flex items-center gap-5'>
-          <Link href='/login/email'>
+          <Link href='/login'>
             <Button
               title='Ingresar'
               state='default'
               outline={true}
             />
           </Link>
-          <Link href='/register'>
+          <Link href='/signup'>
             <Button
               title='Crear cuenta'
               state='default'
@@ -49,10 +49,10 @@ export const Navbar = ({ session }: Props) => {
       )}
       {session === 'register' && (
         <div className='flex items-center gap-5'>
-          <Link href='/login/email'>
+          <Link href='/login'>
             <Button
               title='Ingresar'
-              state='default'
+              state='secondary'
               outline={true}
             />
           </Link>
