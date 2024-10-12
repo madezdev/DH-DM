@@ -1,3 +1,5 @@
 export * from './navbar'
 export * from './footer'
 export * from './button'
+export * from './buttonNavbar'
+export * from './loadingIcon'

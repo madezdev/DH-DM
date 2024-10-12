@@ -13,7 +13,7 @@ interface Props {
   className?: string
 }
 
-export const Button = ({
+export const ButtonNavbar = ({
   title,
   state,
   type,
@@ -30,7 +30,7 @@ export const Button = ({
       disabled={disabled}
       type={type}
       className={clsx(
-        `w-[300px] lg:w-[328px] xl:w-[360px] p-2 h-[50px] flex items-center justify-center rounded-[8px] shadow-sm text-sm font-medium ${className}`,
+        `px-[20px] h-[40px] flex items-center justify-center rounded-[8px] shadow-sm text-sm font-medium ${className}`,
         {
           'bg-primary text-secondary': state === 'default' && !outline,
           'bg-transparent border-primary border text-primary':
