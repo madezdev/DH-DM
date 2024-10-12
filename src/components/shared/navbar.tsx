@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { Button } from './button'
+import { ButtonNavbar } from './buttonNavbar'
 
 interface Props {
   session: 'register' | 'login' | 'empty' | 'menu' | 'landing'
@@ -33,14 +33,14 @@ export const Navbar = ({ session }: Props) => {
       {session === 'landing' && (
         <div className='flex items-center gap-5'>
           <Link href='/login'>
-            <Button
+            <ButtonNavbar
               title='Ingresar'
               state='default'
               outline={true}
             />
           </Link>
           <Link href='/signup'>
-            <Button
+            <ButtonNavbar
               title='Crear cuenta'
               state='default'
             />
@@ -50,7 +50,7 @@ export const Navbar = ({ session }: Props) => {
       {session === 'register' && (
         <div className='flex items-center gap-5'>
           <Link href='/login'>
-            <Button
+            <ButtonNavbar
               title='Ingresar'
               state='secondary'
               outline={true}

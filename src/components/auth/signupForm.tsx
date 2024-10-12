@@ -75,12 +75,12 @@ export const SignUpForm = () => {
 
 
   return (
-    <div className='w-full h-full md:px-0 flex flex-col gap-8 items-center justify-center  py-8 lg:py-0'>
+    <div className='w-full h-full md:px-0 flex flex-col gap-4 items-center justify-center py-8 lg:py-0'>
       <h2 className='heading-2 text-white'>Crear cuenta</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center  w-full'>
-        <div className='grid lg:grid-cols-2 gap-4 lg:gap-8 w-full'>
+        className='flex flex-col items-center justify-center  w-full'>
+        <div className='grid lg:grid-cols-2 justify-center items-center gap-4 lg:gap-8 w-full'>
           {/* Nombre */}
           <div className='w-full'>
             <Controller
@@ -89,7 +89,6 @@ export const SignUpForm = () => {
               render={({ field }) => (
                 <InputForm
                   {...field}
-                  className='p-4'
                   id='firstname'
                   type='text'
                   placeholder='Nombre*'
@@ -106,7 +105,6 @@ export const SignUpForm = () => {
               render={({ field }) => (
                 <InputForm
                   {...field}
-                  className='p-4 '
                   id='lastname'
                   type='text'
                   placeholder='Apellido*'
@@ -123,7 +121,6 @@ export const SignUpForm = () => {
               render={({ field }) => (
                 <InputForm
                   {...field}
-                  className='p-4'
                   id='dni'
                   type='text'
                   placeholder='DNI*'
@@ -141,7 +138,6 @@ export const SignUpForm = () => {
                 <InputForm
                   {...field}
                   id='email'
-                  className='p-4'
                   type='email'
                   placeholder='Correo*'
                   error={errors.email?.message}
@@ -157,7 +153,7 @@ export const SignUpForm = () => {
             carácter especial, una mayúscula y un número
           </p>
         </div>
-        <div className='grid lg:grid-cols-2 gap-4 lg:gap-8 w-full'>
+        <div className='grid lg:grid-cols-2 justify-center items-center gap-4 lg:gap-8 w-full'>
           {/* Contraseña */}
           <div className='w-full'>
             <Controller
@@ -167,7 +163,6 @@ export const SignUpForm = () => {
                 <InputForm
                   {...field}
                   id='password'
-                  className='p-4'
                   type='password'
                   placeholder='Contraseña*'
                   error={errors.password?.message}
@@ -184,7 +179,6 @@ export const SignUpForm = () => {
                 <InputForm
                   {...field}
                   id='confirmPassword'
-                  className='p-4'
                   type='password'
                   placeholder='Confirmar contraseña*'
                   error={errors.confirmPassword?.message}
@@ -202,7 +196,6 @@ export const SignUpForm = () => {
                   {...field}
                   id='phone'
                   type='text'
-                  className='p-4'
                   placeholder='Teléfono*'
                   error={errors.phone?.message}
                 />
@@ -217,7 +210,6 @@ export const SignUpForm = () => {
               type='submit'
               loading={isPending}
               disabled={!isCompleted}
-              className='w-full py-5'
             />
           </div>
         </div>

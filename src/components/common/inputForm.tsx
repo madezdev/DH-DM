@@ -32,7 +32,7 @@ export const InputForm = forwardRef(function InputForm(
         ref={ref}
         {...props}
         className={clsx(
-          'heading-3 w-full rounded-lg text-black transition outline-none',
+          'heading-3 p-2 h-[50px] w-[300px] lg:w-[328px] xl:w-[360px] rounded-lg text-black transition outline-none',
           className,
           {
             'border-primary  focus:outline-primary': !hasError && !noBorder,
@@ -44,10 +44,8 @@ export const InputForm = forwardRef(function InputForm(
       />
       {error && (
         <p
-          className='text-1 text-left italic text-error font-normal mt-1 py-1 pl-3 left-2 pr-3 truncate peer-focus:opacity-0 pointer-events-none transition w-full '
-          style={{
-            maxWidth: 'calc(100% - 160px)',
-          }}>
+          className='text-1 text-left italic text-error mt-[8px] '
+          >
           {error as string}
         </p>
       )}
