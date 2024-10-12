@@ -14,9 +14,10 @@ pnpm dev
 bun dev
 ```
 
-### Digital Money
+# Digital Money
 
-- **Proyecto integrador de Digital House 
+- **Proyecto integrador**
+- Creación de una billetera virtual (PSP)
 
 # Tecnologías Utilizadas
 
