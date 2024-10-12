@@ -14,23 +14,108 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Digital Money
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Proyecto integrador de Digital House 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Tecnologías Utilizadas
 
-## Learn More
+- **Next.js**: Framework de React para aplicaciones web.
+- **React**: Librería de JavaScript para construir interfaces de usuario.
+- **Tailwind CSS**: Framework de CSS para diseñar interfaces de usuario modernas y responsivas.
+- **React Hook Form**: Librería para manejo de formularios en React.
+- **clsx**: Utilidad para construir clases condicionales.
+- **html-react-parser**: Librería para parsear y convertir HTML en componentes React.
 
-To learn more about Next.js, take a look at the following resources:
+# Funcionalidades Principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sprint 1: Inicio, Registro y Acceso
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Inicio
+- Compatibilidad con dispositivos **desktop**, **tablet** y **mobile**.
+- Visualización de las funcionalidades principales: **transferencias** y **pago de servicios**.
+- Acceso directo a "Iniciar sesión" y "Registro".
 
-## Deploy on Vercel
+### Registro
+- Validación de los datos ingresados.
+- Registro exitoso y redirección a la página de **Login** tras completar correctamente.
+- Mensajes de error cuando los datos son incorrectos.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Acceso
+- Validación de los campos requeridos (email y contraseña).
+- Proceso de inicio de sesión en dos pasos/pantallas.
+- Redirección a `/home` tras un login exitoso.
+- Cierre de sesión elimina el token de local storage y redirige a la página promocional.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Épica: Testing & Calidad
+
+### Testing Manual
+- Plan de pruebas con casos de prueba para **suites de smoke** y **regresión**.
+- Clasificación y mantenimiento de casos de prueba manuales.
+- Ejecución de las suites de pruebas.
+
+## Sprint 2: Dashboard, Mi Perfil y Gestión de Medios de Pago
+
+### Dashboard
+- Visualización del saldo disponible con acceso rápido a "Ingresar dinero" y "Ver mi CVU".
+- Resumen de los últimos movimientos financieros con un buscador.
+
+### Mi Perfil
+- Edición de datos personales y alias.
+- Copiado rápido de **CVU** y **alias**.
+- Botón de "Gestionar medios de pago" que redirige a la sección correspondiente.
+
+### Gestión de Medios de Pago
+- Posibilidad de agregar, ver y eliminar tarjetas.
+- Validación del tipo de tarjeta (Visa, Mastercard, AMEX).
+
+## Épica: Testing & Calidad
+
+### Testing Automatizado
+- Automatización de pruebas utilizando **Java** y **Selenium**.
+- Subida del framework de automatización a **GitLab**.
+
+## Sprint 3: Ingreso de Dinero y Mi Actividad
+
+### Ingreso de Dinero
+- Selección de medios de pago adheridos.
+- Visualización del **CVU** y alias de cuenta, con opción para copiar al portapapeles.
+
+### Mi Actividad
+- Historial completo de transacciones, con filtrado por período y tipo de operación.
+- Funcionalidad de búsqueda por palabras clave y detalle de transacción.
+
+## Sprint 4: Pago de Servicios
+
+### Servicios Disponibles
+- Lista completa de servicios disponibles para pago.
+- Buscador por título de servicio.
+
+### Pago de Servicios
+- Verificación de la validez del número de cuenta.
+- Selección de medio de pago y visualización del resumen de la transacción.
+
+## Épica: Testing & Calidad
+
+### Testing Exploratorio
+- Ejecución de tests exploratorios documentados.
+
+# Infraestructura
+
+- Diseño de la infraestructura necesaria para el despliegue.
+- Generación de archivo **Docker Compose** e imagen Docker para despliegue en **AWS**.
+
+# Opcionales
+
+### Recuperación de Contraseña
+- Envío de email con link para recuperación de contraseña.
+- Pantalla para ingreso y confirmación de nueva contraseña.
+
+### Validación de Correo Electrónico
+- Solicitud de código de 6 dígitos al intentar login por primera vez.
+
+### Filtrado de Actividades por Montos Aproximados
+- Filtros por rangos de montos: `$0 - $1000`, `$1000 - $5000`, `$5000 - $20000`, `$20000 - $100000`, `Más de $100000`.
+
+### Descargar Comprobante de Pago
+- Opción de descargar el comprobante de pago en formato **PDF**.
