@@ -14,7 +14,8 @@ const config: Config = {
         bgSecundary: '#151817',
         bgPrimary: '#D2FFEC',
         error: '#E91010',
-        disable: '#CECECE'
+        disable: '#CECECE',
+        background: '#EEEAEA'
       },
       fontFamily: {
         body: ['Roboto', 'sans-serif']

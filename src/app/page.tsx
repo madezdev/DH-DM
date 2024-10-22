@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import { Card, Footer, Navbar } from '@/components'
+import { Card, Footer, Topbar } from '@/components'
 import { cardLandoPage } from '@/utils/landingPage'
 
 export default function HomePage() {
   return (
     <div className='relative h-full w-full flex flex-col justify-between'>
-      <Navbar session={'landing'} />
+      <Topbar session={'landing'} />
       <div className=' flex-grow flex flex-col justify-between'>
         <Image
           src='/images/landing.png'

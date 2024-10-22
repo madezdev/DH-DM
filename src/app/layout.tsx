@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`h-[100dvh] w-screen overflow-x-auto ${roboto.className}`}>{children}</body>
+      <body className={`min-h-[100dvh] w-screen overflow-x-auto ${roboto.className}`}>{children}</body>
     </html>
   )
 }

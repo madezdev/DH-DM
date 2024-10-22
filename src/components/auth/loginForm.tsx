@@ -1,15 +1,15 @@
 'use client'
-import useLocalStorage from '@/hooks/useLocalStorage'
-import { LoginFormProps, UserData } from '@/interfaces/I_UserData'
-import { setCookieClient } from '@/utils/cookieClient'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import useLocalStorage from '@/hooks/useLocalStorage'
+import { LoginFormProps, UserLogin } from '@/interfaces/I_UserData'
+import { setCookieClient } from '@/utils/cookieClient'
 import { StepMail } from './stepMail'
 import { StepPass } from './stepPass'
 import { postLogin } from '@/services/S_auth'
 
 export const LoginForm = ({ isSignupSuccess }: LoginFormProps) => {
-  const [userData, setUserData] = useState<UserData>({ email: '' })
+  const [userData, setUserData] = useState<UserLogin>({ email: '' })
   const [error, setError] = useState<string | null>(null)
   const [step, setStep] = useState(1)
   const { setValue } = useLocalStorage('acc_token')
@@ -51,7 +51,7 @@ export const LoginForm = ({ isSignupSuccess }: LoginFormProps) => {
   }
 
   return (
-    <div className='w-full h-full px-4 md:px-0 flex flex-col items-center justify-center md:w-2/3 xl:w-96 mx-auto my-8'>
+    <>
       {step === 1 && (
         <StepMail
           onSubmit={handleEmailSubmit}
@@ -67,6 +67,6 @@ export const LoginForm = ({ isSignupSuccess }: LoginFormProps) => {
           <p className='text-sm italic font-normal'>{error}</p>
         </div>
       )}
-    </div>
+    </>
   )
 }

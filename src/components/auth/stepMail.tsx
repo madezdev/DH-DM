@@ -1,10 +1,9 @@
 'use client'
 import React from 'react'
-import { useRouter  } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useForm, Controller } from 'react-hook-form'
 import { Cookie } from '@/interfaces/I_cookie'
-import { InputForm } from '../common'
-import { Button } from '../shared'
+import { Button, InputForm } from '../shared'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { emailSchema } from '@/shema/login'
 
@@ -28,10 +27,10 @@ export const StepMail = ({ onSubmit }: Props) => {
 
   return (
     <section className='flex flex-col items-center justify-center gap-4 w-full h-full'>
-      <h2 className='heading-2 text-white'>¡Hola! Ingresá tu e-mail</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center gap-4 w-full'>
+        className='flex flex-col items-center justify-center gap-4 w-full h-full'>
+        <h2 className='heading-2 text-white'>¡Hola! Ingresá tu e-mail</h2>
         <Controller
           name='email'
           control={control}
