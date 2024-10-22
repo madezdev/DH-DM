@@ -1,8 +1,19 @@
+import React from 'react'
+import {
+  Activity,
+  BalanceCard,
+  Container,
+  TransactionButtons,
+} from '@/components'
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
-    <div>
-      <h1>Hello Page</h1>
-    </div>
-  );
+    <Container title='Inicio'>
+      <div className='flex flex-col justify-between gap-5 mb-[20px] w-full'>
+        <BalanceCard />
+        <TransactionButtons />
+        <Activity />
+      </div>
+    </Container>
+  )
 }

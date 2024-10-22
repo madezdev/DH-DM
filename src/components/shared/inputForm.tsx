@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { forwardRef } from 'react'
+import  React, { forwardRef } from 'react'
 import clsx from 'clsx'
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 
@@ -32,7 +32,7 @@ export const InputForm = forwardRef(function InputForm(
         ref={ref}
         {...props}
         className={clsx(
-          'heading-3 p-2 h-[50px] w-[300px] lg:w-[328px] xl:w-[360px] rounded-lg text-black transition outline-none',
+          'text-[18px] p-2 h-[67px] w-[300px] lg:w-[328px] xl:w-[360px] rounded-lg text-black transition outline-none',
           className,
           {
             'border-primary  focus:outline-primary': !hasError && !noBorder,

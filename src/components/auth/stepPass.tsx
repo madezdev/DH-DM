@@ -1,8 +1,7 @@
-import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, Controller } from 'react-hook-form'
-import { InputForm } from '../common'
-import { Button, LoadingIcon } from '../shared'
+import { Button, InputForm, LoadingIcon } from '../shared'
 import { passwordSchema } from '@/shema/login'
 
 interface Props {
@@ -20,12 +19,15 @@ export const StepPass = ({ onSubmit }: Props) => {
       password: '',
     },
   })
-  
+
   return (
-    <div>
+    <section className='flex flex-col items-center justify-center gap-4 w-full h-full'>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col items-center gap-4 w-full'>
+        <h1 className='heading-2 text-center text-white'>
+          Ingresa tu contraseña
+        </h1>
         <Controller
           name='password'
           control={control}
@@ -48,6 +50,6 @@ export const StepPass = ({ onSubmit }: Props) => {
           className='w-[300px] lg:w-[328px] xl:w-[360px] px-5 py-[20px]'
         />
       </form>
-    </div>
+    </section>
   )
 }

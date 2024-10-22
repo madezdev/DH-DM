@@ -1,17 +1,29 @@
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { ButtonNavbar } from './buttonNavbar'
+import { getTokenFromCookie } from '@/utils/getTokenCookie'
+import { getAcountInfo } from '@/services/S_getAcountInfo'
+import { getUserInfo } from '@/services/S_user'
+import { Avatar, ButtonNavbar } from '../shared'
 
 interface Props {
   session: 'register' | 'login' | 'empty' | 'menu' | 'landing'
 }
 
-export const Navbar = ({ session }: Props) => {
+export const Topbar = async ({ session }: Props) => {
+  const token = await getTokenFromCookie()
+  const accountInfo = await getAcountInfo(token)
+  const { firstname, lastname } = await getUserInfo(
+    accountInfo.user_id,
+    token,
+    'user-info'
+  )
+ 
   return (
-    <nav
+    <header
       className={clsx(
-        `flex items-center justify-between p-4 h-[64px] px-[4vw] w-full `,
+        `flex items-center justify-between p-4 h-[64px] px-[4vw] w-full fixed top-0 z-50`,
         {
           'bg-secondary':
             session === 'login' || session === 'menu' || session === 'landing',
@@ -59,10 +71,13 @@ export const Navbar = ({ session }: Props) => {
         </div>
       )}
       {session === 'menu' && (
-        <div className='flex items-center gap-5'>
-          <p>menu</p>
+        <div className='flex items-center gap-1'>
+          <Avatar
+            name={firstname}
+            lastname={lastname}
+          />
         </div>
       )}
-    </nav>
+    </header>
   )
 }

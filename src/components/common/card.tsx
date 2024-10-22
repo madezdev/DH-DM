@@ -1,15 +1,34 @@
+import React from 'react'
+import Link from 'next/link'
+import { FiArrowRight } from 'react-icons/fi'
 interface Props {
   title: string
-  description: string
+  className?: string
+  children?: React.ReactNode
+  nextTitlePage?: string
+  path?: string
 }
 
-export const Card = ({ title, description }: Props) => {
+export const Card = ({
+  title,
+  className,
+  children,
+  nextTitlePage,
+  path = '/',
+}: Props) => {
   return (
-    <div className='bg-white p-2 md:p-8 rounded-xl xl:w-[500px] xl:h-[246px] xl:p-[30px]'>
-      <h3 className='text-[28px] md:text-[40px] border-b-2 border-primary'>
-        <strong>{title}</strong>
-      </h3>
-      <p className='text-[16px] md:text-[20px] mt-2'>{description}</p>
-    </div>
+    <article
+      className={`w-full bg-[#FFF] rounded-lg shadow flex flex-col p-4 ${className}`}>
+      <h3 className='heading-2'>{title}</h3>
+      {children}
+      {nextTitlePage && (
+        <Link href={path}>
+          <div className='flex justify-between items-center mt-4'>
+            <span className='button-1'> {nextTitlePage} </span>
+            <FiArrowRight className='w-[1.25rem] h-[1.25rem] text-black/50' />
+          </div>
+        </Link>
+      )}
+    </article>
   )
 }
