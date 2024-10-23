@@ -1,24 +1,22 @@
+'use client'
 import React from 'react'
-import Link from 'next/link'
-import { Button } from '../shared'
+import { useRouter } from 'next/navigation'
 
 export const TransactionButtons = () => {
+  const router = useRouter()
   return (
-    <div className='flex flex-col gap-5 w-full sticky top-[160px]'>
-      <Link href='/deposit-money'>
-        <Button
-          title='Ingresar dinero'
-          state='default'
-          className='w-full'
-        />
-      </Link>
-      <Link href='/pay-service'>
-        <Button
-          title='Pago de servicios'
-          state='default'
-          className='w-full'
-        />
-      </Link>
+    <div className='flex flex-col lg:flex-row lg:justify-between gap-5 w-full sticky top-[160px]'>
+      <button
+        className='bg-primary rounded-lg py-2 px-4 text-black button-1 xl:text-[24px] font-bold w-full h-[106px]'
+        onClick={() => router.push('/deposit')}>
+        Cargar dinero
+      </button>
+
+      <button
+        className='bg-primary rounded-lg py-2 px-4 text-black button-1 xl:text-[24px] font-bold w-full h-[106px]'
+        onClick={() => router.push('/withdraw')}>
+        Pago de servicios
+      </button>
     </div>
   )
 }
