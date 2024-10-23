@@ -13,7 +13,7 @@ export default async function Layout({
     redirect('/login')
   }
   return (
-    <div className='h-full bg-background flex flex-col justify-between'>
+    <div className='min-h-[100dvh] bg-background flex flex-col justify-between'>
       <Topbar session='menu' />
       <main className=' px-[4vw] mt-[60px] flex-1'>{children}</main>
       <Footer />

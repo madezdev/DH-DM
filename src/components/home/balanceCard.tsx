@@ -8,7 +8,7 @@ export const BalanceCard = async () => {
   const token = await getTokenFromCookie()
   const { available_amount } = await getAcountInfo(token)
   return (
-    <article className='bg-secondary w-full h-[160px] rounded-lg px-7 py-4 flex flex-col justify-between sticky top-[80px] z-40'>
+    <article className='bg-secondary w-full h-[160px] xl:h-[230px] rounded-lg px-7 py-4 flex flex-col justify-between sticky top-[80px] z-40'>
       <div className='flex items-center justify-end gap-x-2'>
         <Link href={'/'}>
           <small className='text-white text-2'>Ver tarjetas</small>
