@@ -1,5 +1,5 @@
 import React from 'react'
-import { Footer, Topbar } from '@/components'
+import { Footer, Sidebar, Topbar } from '@/components'
 import { getTokenFromCookie } from '@/utils/getTokenCookie'
 import { redirect } from 'next/navigation'
 
@@ -15,7 +15,10 @@ export default async function Layout({
   return (
     <div className='min-h-[100dvh] bg-background flex flex-col justify-between'>
       <Topbar session='menu' />
-      <main className=' px-[4vw] mt-[60px] flex-1'>{children}</main>
+      <div className="flex flex-1 h-full">
+        <Sidebar />
+        <main className="px-[4vw] flex-1">{children}</main>
+      </div>
       <Footer />
     </div>
   )
