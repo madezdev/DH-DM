@@ -9,10 +9,10 @@ import {
 export default async function HomePage() {
   return (
     <Container title='Inicio'>
-      <div className='flex flex-col justify-between gap-5 mb-[20px] w-full h-full'>
+      <div className='flex flex-col gap-5 pt-4 w-full h-full'>
         <BalanceCard />
         <TransactionButtons />
-        <Activity />
+        <Activity  />
       </div>
     </Container>
   )
