@@ -36,7 +36,7 @@ export const StepPass = ({ onSubmit }: Props) => {
               {...field}
               id='password'
               type='password'
-              placeholder='Correo*'
+              placeholder='Contraseña*'
               error={errors.password?.message}
             />
           )}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import  React, { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 
@@ -32,7 +32,7 @@ export const InputForm = forwardRef(function InputForm(
         ref={ref}
         {...props}
         className={clsx(
-          'text-[18px] p-2 h-[67px] w-[300px] lg:w-[328px] xl:w-[360px] rounded-lg text-black transition outline-none',
+          'text-[18px] px-2 h-[67px] w-[300px] lg:w-[328px] xl:w-[360px] rounded-lg text-black transition outline-none',
           className,
           {
             'border-primary  focus:outline-primary': !hasError && !noBorder,
@@ -43,9 +43,7 @@ export const InputForm = forwardRef(function InputForm(
         title={error as string}
       />
       {error && (
-        <p
-          className='text-1 text-left italic text-error mt-[8px] '
-          >
+        <p className='text-1 text-left italic text-error mt-[8px] '>
           {error as string}
         </p>
       )}

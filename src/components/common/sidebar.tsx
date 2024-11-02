@@ -11,16 +11,15 @@ export const Sidebar = () => {
   const pathname = usePathname()
 
   const handleLogout = () => {
-    removeCookieClient("authToken");
-    localStorage.removeItem("acc_token");
+    removeCookieClient('authToken')
+    localStorage.removeItem('acc_token')
     router.push('/')
   }
 
   return (
     <aside
-      id='sidebar' 
-      className='hidden h-full z-40 top-[64px] fixed xl:relative xl:block xl:h-[calc(100vh-128px)] w-[276px] bg-primary'
-      >
+      id='sidebar'
+      className='hidden h-full z-40 top-[64px] fixed xl:relative xl:block xl:h-[calc(100vh-128px)] w-[276px] bg-primary'>
       <div className='pt-[100px] w-full h-full pl-10 flex flex-col gap-5 items-start text-black'>
         <Link
           href='/home'
@@ -30,21 +29,21 @@ export const Sidebar = () => {
           Inicio
         </Link>
         <Link
-          href='/dashboard/activity'
+          href='/activity'
           className={clsx('text-base', {
             'font-extrabold': pathname === navbarPaths.activity,
           })}>
           Actividad
         </Link>
         <Link
-          href='/dashboard/profile'
+          href='/profile'
           className={clsx('text-base', {
             'font-extrabold': pathname === navbarPaths.profile,
           })}>
           Tu perfil
         </Link>
         <Link
-          href='/dashboard/deposit'
+          href='/deposit'
           className={clsx('text-base', {
             'font-extrabold':
               pathname === navbarPaths.deposit ||
@@ -54,14 +53,14 @@ export const Sidebar = () => {
           Cargar dinero
         </Link>
         <Link
-          href='/dashboard/payment'
+          href='/payment'
           className={clsx('text-base', {
             'font-extrabold': pathname === navbarPaths.payment,
           })}>
           Pagar servicios
         </Link>
         <Link
-          href='/dashboard/cards'
+          href='/cards'
           className={clsx('text-base', {
             'font-extrabold': pathname === navbarPaths.cards,
           })}>
