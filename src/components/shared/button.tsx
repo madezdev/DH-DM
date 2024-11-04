@@ -44,7 +44,7 @@ export const Button = ({
           'cursor-not-allowed bg-disable': disabled,
         }
       )}>
-      <div className='flex items-center justify-center w-full'>
+      <div className='flex items-center justify-between w-full'>
         {loading ? (
           <CgSpinner className='animate-spin' />
         ) : (
