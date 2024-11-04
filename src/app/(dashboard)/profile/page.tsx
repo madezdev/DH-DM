@@ -19,7 +19,7 @@ export default async function ProfilePage() {
   return (
     <Container title='Perfil'>
       <div className='flex flex-col justify-between gap-[20px] w-full'>
-        <ProfileData userInfo={profileInfo} />
+        <ProfileData userInfo={ profileInfo } />
         <Link href='/manage-payment'>
           <Button
             title='Gestionar los medios de pago'

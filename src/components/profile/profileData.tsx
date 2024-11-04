@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import clsx from 'clsx'
+import { useForm } from 'react-hook-form'
+import toast, { Toaster } from 'react-hot-toast'
 import { ContainerCard } from '../common'
 import { Profile } from '@/interfaces/I_Profile'
-import { useForm } from 'react-hook-form'
-import { sortKeyProfile } from '@/utils/sortKeyProfile'
-import clsx from 'clsx'
 import { MdEdit } from 'react-icons/md'
 import { patchUserInfo } from '@/services/S_user'
 
@@ -15,7 +15,6 @@ interface Props {
 
 export const ProfileData = ({ userInfo }: Props) => {
   const router = useRouter()
-  const profileInfoNormalized = sortKeyProfile(userInfo)
   const [isEditable, setIsEditable] = useState({
     name: '',
     dni: '',
@@ -23,26 +22,35 @@ export const ProfileData = ({ userInfo }: Props) => {
     password: '',
   })
 
-  const { handleSubmit, reset, register } = useForm<Profile>({
+  const { handleSubmit, register, getValues } = useForm<Profile>({
     mode: 'onBlur',
   })
 
   const onSubmit = async (data: Profile) => {
+    const fullName = getValues('firstname') || ''
+    const [firstname, lastname] = fullName.split(' ')
+
     const body = {
-      firstname: data.firstname,
-      lastname: data.lastname,
+      firstname: firstname,
+      lastname: lastname,
       dni: Number(data.dni),
       email: data.email,
       phone: data.phone,
       password: data.password,
     }
-    console.log('body', body)
 
-    const res = await patchUserInfo(userInfo.id, body)
-    console.log(res)
+    await patchUserInfo(userInfo.id, body)
     await fetch('/api/revalidate')
 
     router.refresh()
+    toast.success('Datos actualizados correctamente')
+
+    setIsEditable({
+      name: '',
+      dni: '',
+      phone: '',
+      password: '',
+    })
   }
 
   const handleEditClick = (field: keyof typeof isEditable) => {
@@ -58,12 +66,13 @@ export const ProfileData = ({ userInfo }: Props) => {
     }
   }
 
-  useEffect(() => {
-    reset(profileInfoNormalized)
-  }, [userInfo])
-
   return (
     <ContainerCard title='Tus datos'>
+      <Toaster
+        position='bottom-right'
+        reverseOrder={false}
+        toastOptions={{ duration: 3000 }}
+      />
       <div className='my-4 flex flex-col'>
         <p className='text-1'>Email</p>
         <span className='text-black/50 text-1'> {userInfo?.email} </span>
@@ -139,9 +148,7 @@ export const ProfileData = ({ userInfo }: Props) => {
             <button
               type='button'
               className='p-2'
-              onClick={() => {
-                handleEditClick('dni')
-              }}>
+              onClick={() => handleEditClick('dni')}>
               <MdEdit className='text-black/50' />
             </button>
           </div>
