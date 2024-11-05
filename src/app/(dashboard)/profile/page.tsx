@@ -15,11 +15,11 @@ export default async function ProfilePage() {
     id: accountInfo.user_id,
     ...(await getUserInfo(accountInfo.user_id, token, 'user-info')),
   }
- 
+
   return (
     <Container title='Perfil'>
       <div className='flex flex-col justify-between gap-[20px] w-full'>
-        <ProfileData userInfo={ profileInfo } />
+        <ProfileData userInfo={profileInfo} />
         <Link href='/profile/manage-payment'>
           <Button
             title='Gestionar los medios de pago'
@@ -28,7 +28,7 @@ export default async function ProfilePage() {
             icon={<FaArrowRight />}
           />
         </Link>
-        <BankData accountInfo={ accountInfo } />
+        <BankData accountInfo={accountInfo} />
       </div>
     </Container>
   )
