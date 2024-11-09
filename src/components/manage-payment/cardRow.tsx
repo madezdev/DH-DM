@@ -13,7 +13,6 @@ export const CardRow = ({ number_id, accountInfo, token }: Props) => {
 
   const handleDelete = async (car_id: number) => {
     await deleteCard(accountInfo, car_id, token)
-    console.log('Card deleted', car_id)
   }
 
   return (

@@ -14,7 +14,6 @@ export const Avatar = ({ name, lastname }: Props) => {
     menu?.classList.toggle('hidden')
   }
 
-  console.log(name)
   return (
     <div className='flex items-center gap-1'>
       <Link

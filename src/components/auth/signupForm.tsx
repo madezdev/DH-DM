@@ -62,7 +62,6 @@ export const SignUpForm = () => {
           console.error(resp.error)
           return
         }
-        console.log('response', resp)
         setCookieClientRegisterSuccess()
         router.push('/signup/success')
       })

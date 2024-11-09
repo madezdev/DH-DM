@@ -1,4 +1,4 @@
-import { httpPost } from './common/S_httpPost'
+import axios from 'axios'
 
 interface PostLoginBody {
   email: string
@@ -10,19 +10,8 @@ interface PostLoginResponse {
   error?: string
 }
 
-export async function postLogin(
-  body: PostLoginBody,
-  options = {}
-): Promise<PostLoginResponse> {
-  return httpPost( "/login", body, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( data => data as PostLoginResponse )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const postLogin = async ( body: PostLoginBody ) => {
+  const baseURL = process.env.NEXT_PUBLIC_API_URL
+  const response = await axios.post( `${baseURL}/login`, body, )
+  return response.data as PostLoginResponse
 }

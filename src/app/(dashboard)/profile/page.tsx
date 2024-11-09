@@ -1,19 +1,17 @@
 import { BankData, Button, Container } from '@/components'
 import { ProfileData } from '@/components/profile'
 import { Profile } from '@/interfaces/I_Profile'
-import { getAcountInfo } from '@/services/S_getAcountInfo'
-import { getUserInfo } from '@/services/S_user'
-import { getTokenFromCookie } from '@/utils/getTokenCookie'
+import { getAccount } from '@/services/S_getAcountInfo'
+import { getUser } from '@/services/S_user'
 import Link from 'next/link'
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
 export default async function ProfilePage() {
-  const token = await getTokenFromCookie()
-  const accountInfo = await getAcountInfo(token)
+  const accountInfo = await getAccount()
   const profileInfo: Profile = {
     id: accountInfo.user_id,
-    ...(await getUserInfo(accountInfo.user_id, token, 'user-info')),
+    ...(await getUser(accountInfo.user_id)),
   }
 
   return (

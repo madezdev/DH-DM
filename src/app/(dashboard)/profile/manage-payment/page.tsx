@@ -1,6 +1,6 @@
+import React from 'react'
 import { Container, ContainerCard } from '@/components'
 import { CardList, RouterCard } from '@/components/manage-payment'
-import React from 'react'
 import { GoPlusCircle } from 'react-icons/go'
 
 export default function ManagePaymentPage() {

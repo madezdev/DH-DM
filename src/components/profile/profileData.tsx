@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { ContainerCard } from '../common'
 import { Profile } from '@/interfaces/I_Profile'
 import { MdEdit } from 'react-icons/md'
-import { patchUserInfo } from '@/services/S_user'
+import { patchUser } from '@/services/S_user'
 
 interface Props {
   userInfo: Profile
@@ -39,7 +39,7 @@ export const ProfileData = ({ userInfo }: Props) => {
       password: data.password,
     }
 
-    await patchUserInfo(userInfo.id, body)
+    await patchUser(userInfo.id, body)
     await fetch('/api/revalidate')
 
     router.refresh()

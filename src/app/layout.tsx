@@ -10,9 +10,16 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: 'Digital Money',
-  description: 'Digital Money is a Next.js project created by Digital House students.',
-  keywords: ['Digital Money', 'Next.js', 'Digital House', 'Front End Developer'],
+  description:
+    'Digital Money is a Next.js project created by Digital House students.',
+  keywords: [
+    'Digital Money',
+    'Next.js',
+    'Digital House',
+    'Front End Developer',
+  ],
 }
+
 
 export default function RootLayout({
   children,
@@ -20,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
-      <body className={`min-h-[100dvh] w-screen overflow-x-auto ${roboto.className}`}>{children}</body>
+    <html lang='es'>
+      <body
+        className={`min-h-[100dvh] w-screen overflow-x-auto ${roboto.className}`}>
+        {children}
+      </body>
     </html>
   )
 }

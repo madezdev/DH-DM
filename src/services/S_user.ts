@@ -1,31 +1,12 @@
 import { UserData } from '@/interfaces/I_UserData'
-import { httpGetRevalidate, httpPatch } from './common/S_httpPost'
+import { axiosClient } from './common/axios.client'
 
-export async function getUserInfo( id: number, token: string, revalidateTag = "", options = {} ): Promise<UserData> {
-  return httpGetRevalidate( `/users/${ id }`, token, revalidateTag, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as UserData )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const getUser = async ( userId: number ) => {
+  const response = await axiosClient.get( `/users/${ userId }` )
+  return response.data as UserData
 }
 
-
-export async function patchUserInfo( id: number, body: UserData, options = {} ): Promise<UserData> {
-  return httpPatch( `/users/${ id }`, body, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as UserData )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const patchUser = async ( userId: number, body: UserData ) => {
+  const response = await axiosClient.patch( `/users/${ userId }`, body )
+  return response.data as UserData
 }
