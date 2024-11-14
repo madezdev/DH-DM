@@ -1,18 +1,20 @@
 'use client'
-import { deleteCard } from '@/services/S_card'
 import React from 'react'
+import { deleteCard } from '@/services/S_card'
 
 interface Props {
+  card_id: number
+  accountId: number
   number_id: number
-  accountInfo: number
-  token: string
+  onDelete: (card_id: number) => void
 }
 
-export const CardRow = ({ number_id, accountInfo, token }: Props) => {
-  const lastFourNumbers = number_id.toString().slice(-4)
-
-  const handleDelete = async (car_id: number) => {
-    await deleteCard(accountInfo, car_id, token)
+export const CardRow = ({ card_id, accountId, onDelete, number_id }: Props) => {
+  const lastFourNumbers = number_id ? number_id.toString().slice(-4) : '****'
+  
+  const handleDelete = async (card_id: number) => {
+    await deleteCard(accountId, card_id)
+    onDelete(card_id)
   }
 
   return (
@@ -22,8 +24,8 @@ export const CardRow = ({ number_id, accountInfo, token }: Props) => {
         <p className='text-1'>Termina en {lastFourNumbers}</p>
       </div>
       <button
-        onClick={() => handleDelete(number_id)}
-        className='text-2'>
+        className='text-2'
+        onClick={() => handleDelete(card_id)}>
         Eliminar
       </button>
     </div>

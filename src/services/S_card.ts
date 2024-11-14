@@ -1,59 +1,22 @@
-import { Card } from '@/interfaces/I_Card'
-import { httpDelete, httpGet, httpPost } from './common/S_httpPost'
+import { axiosClient } from './common/axios.client'
+import { Card, PostCard } from '@/interfaces/I_Card'
 
-export async function getCards( account_id: number, token: string, options = {} ): Promise<Card[]> {
-  return httpGet( `/accounts/${ account_id }/cards`, token, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as Card[] )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const getCards = async ( account_id: number ) => {
+  const response = await axiosClient( `/accounts/${ account_id }/cards` )
+  return response.data as Card[]
 }
 
-export async function postCards( account_id: number, body: Card, options = {} ): Promise<Card> {
-  return httpPost( `/accounts/${ account_id }/cards`, body, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as Card )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const postCards = async ( account_id: number, body: PostCard ) => {
+  const response = await axiosClient.post( `/accounts/${ account_id }/cards`, body )
+  return response.data
 }
 
-
-export async function deleteCard( account_id: number, cardId: number, options = {} ): Promise<Card> {
-  return httpDelete( `/accounts/${ account_id }/cards/${ cardId }`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as Card )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const deleteCard = async ( account_id: number, cardId: number ) => {
+  const response = await axiosClient.delete( `/accounts/${ account_id }/cards/${ cardId }` )
+  return response.data
 }
 
-export async function getCardById( account_id: number = 0, token: string, cardId: string, options = {} ): Promise<Card> {
-  return httpGet( `/accounts/${ account_id }/cards/${ cardId }`, token, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as Card )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const getCardById = async ( account_id: number, cardId: number ) => {
+  const response = await axiosClient.get( `/accounts/${ account_id }/cards/${ cardId }` )
+  return response.data
 }

@@ -1,22 +1,29 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { CardRow } from './cardRow'
-import { getTokenFromCookie } from '@/utils/getTokenCookie'
-import { getAccount } from '@/services/S_getAcountInfo'
-import { getCards } from '@/services/S_card'
+import { Card } from '@/interfaces/I_Card'
 
-export const CardList = async () => {
-  const token = await getTokenFromCookie()
-  const accountInfo = await getAccount()
-  const cards = await getCards(accountInfo.id, token)
-  
+interface Props {
+  cards: Card[]
+  accountId: number
+}
+
+export const CardList = ({ cards, accountId }: Props) => {
+  const [cardList, setCardList] = useState<Card[]>(cards)
+
+  const handleCardDelete = (card_id: number) => {
+    setCardList((prevCards) => prevCards.filter((card) => card.id !== card_id))
+  }
+
   return (
     <div className='flex flex-col gap-2 justify-center h-full mt-4'>
-      {cards.map((item, index) => (
+      {cardList.map((item, index) => (
         <CardRow
           key={index}
-          number_id={ item.number_id }
-          accountInfo={ accountInfo.user_id }
-          token={ token }
+          number_id={item.number_id}
+          card_id={item.id}
+          accountId={accountId}
+          onDelete={handleCardDelete}
         />
       ))}
     </div>

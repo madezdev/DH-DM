@@ -11,7 +11,7 @@ export const TopMenu = async () => {
 
   return (
     <header className='flex items-center justify-between p-4 h-[64px] px-[4vw] w-full fixed top-0 z-50 bg-secondary'>
-      <Link href='/'>
+      <Link href='/home'>
         <Image
           src={`/images/logo/Logo-short.svg`}
           width={46}

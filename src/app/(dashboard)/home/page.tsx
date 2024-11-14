@@ -15,7 +15,7 @@ export default async function HomePage() {
 
   return (
     <Container title='Inicio'>
-      <div className='flex flex-col gap-5 pt-4 w-full h-full'>
+      <div className='flex flex-col gap-5 w-full h-full'>
         <BalanceCard />
         <TransactionButtons />
         <Suspense fallback={<div>Loading...</div>}>
