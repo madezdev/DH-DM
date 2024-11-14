@@ -30,13 +30,13 @@ export const Avatar = ({ name, lastname }: Props) => {
             .join('')}
         </span>
       </Link>
-      <div className='hidden lg:block pl-2'>
+      <div className='hidden md:block pl-2'>
         <p className='heading-3 text-white'>
           Hola, {name} {lastname}
         </p>
       </div>
       <button
-        className='block lg:hidden'
+        className='block md:hidden'
         onClick={toggleMenu}>
         <IoMenu className='text-[40px] text-primary' />
       </button>

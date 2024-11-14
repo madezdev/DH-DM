@@ -19,7 +19,7 @@ export const Sidebar = () => {
   return (
     <aside
       id='sidebar'
-      className='hidden h-full z-40 top-[64px] fixed xl:relative xl:block xl:h-[calc(100vh-128px)] w-[276px] bg-primary'>
+      className='hidden h-full z-40  top-[64px] fixed md:relative md:block md:h-[calc(100vh-128px)] w-[276px] bg-primary'>
       <div className='pt-[100px] w-full h-full pl-10 flex flex-col gap-5 items-start text-black'>
         <Link
           href='/home'

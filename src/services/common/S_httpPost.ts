@@ -184,12 +184,12 @@ export const httpPatch = async ( endpoint: string, body: object, options: HttpGe
 // Configuración de headers de usuario
 const getUserConfigHeaders = (): HeadersInit => {
   const headers: HeadersInit = {}
-  if ( typeof window !== 'undefined' && !headers.Authorization ) {
+  
     const token = localStorage.getItem( 'acc_token' )
     if ( token ) {
       headers.Authorization = JSON.parse( token )
     }
-  }
+  
 
   return headers
 }

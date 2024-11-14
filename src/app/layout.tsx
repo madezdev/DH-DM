@@ -1,10 +1,12 @@
 import React from 'react'
+import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
+import { getTokenFromCookie } from '@/utils/getTokenCookie'
 
-const roboto = Roboto({
-  weight: ['100', '300', '400', '700', '900'],
+const openSans = Open_Sans({
+  weight: ['300', '400', '600', '700', '800'],
   subsets: ['latin'],
 })
 
@@ -20,16 +22,19 @@ export const metadata: Metadata = {
   ],
 }
 
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const token = await getTokenFromCookie()
+  if (!token) {
+    redirect('/login')
+  }
   return (
     <html lang='es'>
       <body
-        className={`min-h-[100dvh] w-screen overflow-x-auto ${roboto.className}`}>
+        className={`min-h-[100dvh] w-screen overflow-x-auto ${openSans.className}`}>
         {children}
       </body>
     </html>
