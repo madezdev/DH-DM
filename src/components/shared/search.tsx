@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
 'use client'
 import React, { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { IoSearch } from 'react-icons/io5'

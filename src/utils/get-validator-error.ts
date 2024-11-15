@@ -1,6 +1,6 @@
 import { TypeWithKey } from './Type-With-Key'
 
-export const getValidationError = ( errorCode: keyof typeof codeMatcher ) => {
+export const getValidationError = ( errorCode: keyof TypeWithKey<string> ) => {
   const codeMatcher: TypeWithKey<string> = {
     ERR_NETWORK: 'Error de red',
     ERR_TIMEOUT: 'Tiempo de espera agotado',

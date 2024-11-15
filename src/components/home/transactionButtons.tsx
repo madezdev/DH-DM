@@ -7,13 +7,13 @@ export const TransactionButtons = () => {
   return (
     <div className='flex flex-col lg:flex-row lg:justify-between gap-5 w-full sticky top-[160px]'>
       <button
-        className='bg-primary rounded-lg py-2 px-4 text-black button-2 xl:text-[24px] font-bold w-full h-[67px] xl:h-[106px]'
+        className='bg-primary rounded-lg py-2 px-4 text-black button-2 md:text-[24px] font-bold w-full h-[67px] md:h-[85px] xl:h-[106px]'
         onClick={() => router.push('/deposit')}>
         Cargar dinero
       </button>
 
       <button
-        className='bg-primary rounded-lg py-2 px-4 text-black button-2 xl:text-[24px] font-bold w-full h-[67px] xl:h-[106px]'
+        className='bg-primary rounded-lg py-2 px-4 text-black button-2 md:text-[24px] font-bold w-full h-[67px] md:h-[85px] xl:h-[106px]'
         onClick={() => router.push('/withdraw')}>
         Pago de servicios
       </button>

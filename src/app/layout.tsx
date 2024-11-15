@@ -1,9 +1,7 @@
 import React from 'react'
-import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import { Open_Sans } from 'next/font/google'
 import './globals.css'
-import { getTokenFromCookie } from '@/utils/getTokenCookie'
 
 const openSans = Open_Sans({
   weight: ['300', '400', '600', '700', '800'],
@@ -22,15 +20,12 @@ export const metadata: Metadata = {
   ],
 }
 
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const token = await getTokenFromCookie()
-  if (!token) {
-    redirect('/login')
-  }
   return (
     <html lang='es'>
       <body

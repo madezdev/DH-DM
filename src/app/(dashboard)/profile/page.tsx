@@ -3,11 +3,17 @@ import { ProfileData } from '@/components/profile'
 import { Profile } from '@/interfaces/I_Profile'
 import { getAccount } from '@/services/S_getAcountInfo'
 import { getUser } from '@/services/S_user'
+import { getTokenFromCookie } from '@/utils/getTokenCookie'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
 export default async function ProfilePage() {
+  const token = await getTokenFromCookie()
+  if (!token) {
+    redirect('/login')
+  }
   const accountInfo = await getAccount()
   const profileInfo: Profile = {
     id: accountInfo.user_id,

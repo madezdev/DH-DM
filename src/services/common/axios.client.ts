@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { getValidationError } from '@/utils/get-validator-error'
 import { getTokenFromCookie } from '@/utils/getTokenCookie'
 
 export const axiosClient = axios.create( {
@@ -28,7 +27,7 @@ axiosClient.interceptors.response.use(
     return response
   },
   ( error ) => {
-    console.log( getValidationError( error.code ) )
+    console.log( error.code )
     return Promise.reject( error )
   }
 )
