@@ -10,11 +10,14 @@ interface Props {
 
 export const AddCard = ({ numberOfCards }: Props) => {
   const [isFull, setIsFull] = useState<boolean>(false)
+  console.log('numberOfCards', numberOfCards)
   const MAX_CARDS = 10
 
   useEffect(() => {
     if (numberOfCards >= MAX_CARDS) {
       setIsFull(true)
+    } else {
+      setIsFull(false)
     }
   }, [numberOfCards])
 

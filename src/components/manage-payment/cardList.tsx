@@ -6,22 +6,21 @@ import { Card } from '@/interfaces/I_Card'
 interface Props {
   cards: Card[]
   accountId: number
-
+  onCardRemoved: (cardId: number) => void
 }
 
-export const CardList = ({ cards, accountId }: Props) => {
+export const CardList = ({ cards, accountId, onCardRemoved }: Props) => {
   const [cardList, setCardList] = useState<Card[]>(cards)
-  
+
   const handleCardDelete = (card_id: number) => {
+    onCardRemoved(card_id)
     setCardList((prevCards) => prevCards.filter((card) => card.id !== card_id))
   }
 
-  useEffect(() => {
-    
-  }, [cardList])
+  useEffect(() => {}, [cardList, handleCardDelete])
 
   return (
-    <div className='flex flex-col gap-2 justify-center h-[calc(100dvh-440px)] mt-4'>
+    <div className='flex flex-col justify-center mt-4'>
       {cardList.map((item, index) => (
         <CardRow
           key={index}

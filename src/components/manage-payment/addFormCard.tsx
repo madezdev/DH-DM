@@ -1,17 +1,21 @@
 'use client'
 import React, { useEffect, useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { ContainerCard } from '../common'
 import { MaskedCard } from './maskedCard'
 import { Button, InputForm } from '../shared'
 import { PostCard } from '@/interfaces/I_Card'
 import { postCards } from '@/services/S_card'
+import { cardSchema } from '@/shema/card.schema'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 interface Props {
   account_id: number
 }
 
 export const AddFormCard = ({ account_id }: Props) => {
+  const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [isDataCardComplete, setIsDataCardComplete] = useState(false)
   const [dataCard, setDataCard] = useState<PostCard>({
@@ -21,7 +25,15 @@ export const AddFormCard = ({ account_id }: Props) => {
     expiration_date: '',
   })
 
-  const { register, handleSubmit, watch, reset } = useForm<PostCard>()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<PostCard>({
+    resolver: zodResolver(cardSchema),
+  })
   const formValues = watch()
 
   const onSubmit = (data: PostCard) => {
@@ -41,6 +53,7 @@ export const AddFormCard = ({ account_id }: Props) => {
     })
     setTimeout(() => {
       reset()
+      router.push('/profile/manage-payment')
     }, 2000)
   }
 
@@ -61,7 +74,7 @@ export const AddFormCard = ({ account_id }: Props) => {
 
   return (
     <ContainerCard className='flex flex-col items-center w-full '>
-      <div className='py-4 px-[20px] w-full'>
+      <div className='py-4 px-[8px] w-full'>
         <MaskedCard dataCard={dataCard} />
         <div className='w-full mt-[30px]'>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,6 +96,11 @@ export const AddFormCard = ({ account_id }: Props) => {
                   maxLength: 16,
                 })}
               />
+              {errors.number_id && (
+                <span className='text-red-500 text-[12px]'>
+                  {errors.number_id.message}
+                </span>
+              )}
 
               <InputForm
                 type='text'
@@ -92,6 +110,11 @@ export const AddFormCard = ({ account_id }: Props) => {
                 className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
                 {...register('first_last_name', { required: true })}
               />
+              {errors.first_last_name && (
+                <span className='text-red-500 text-[12px]'>
+                  {errors.first_last_name.message}
+                </span>
+              )}
 
               <InputForm
                 type='text'
@@ -101,6 +124,11 @@ export const AddFormCard = ({ account_id }: Props) => {
                 className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
                 {...register('expiration_date', { required: true })}
               />
+              {errors.expiration_date && (
+                <span className='text-red-500 text-[12px]'>
+                  {errors.expiration_date.message}
+                </span>
+              )}
 
               <InputForm
                 type='number'
@@ -110,6 +138,11 @@ export const AddFormCard = ({ account_id }: Props) => {
                 className='px-5 bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
                 {...register('cod', { required: true })}
               />
+              {errors.cod && (
+                <span className='text-red-500 text-[12px]'>
+                  {errors.cod.message}
+                </span>
+              )}
 
               <div className='mt-[10px]'>
                 <Button
