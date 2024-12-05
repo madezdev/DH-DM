@@ -61,7 +61,7 @@ export const MaskedCard = ({ dataCard }: Props) => {
   return (
     <div
       className={clsx(
-        'relavite h-[174px] p-5 rounded-[8px] shadow-md flex flex-col justify-between z-10',
+        'relavite h-[174px] lg:w-[306px] p-5 rounded-[8px] shadow-md flex flex-col justify-between z-10',
         {
           'bg-[#EEEAEA]': !number_id,
           [colorCard[number_id?.toString().charAt(0)]]: number_id,

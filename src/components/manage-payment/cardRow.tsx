@@ -24,7 +24,7 @@ export const CardRow = ({ card_id, accountId, onDelete, number_id }: Props) => {
         <p className='text-1'>Termina en {lastFourNumbers}</p>
       </div>
       <button
-        className='text-2'
+        className='text-[12px] lg:text-[16px] font-bold'
         onClick={() => handleDelete(card_id)}>
         Eliminar
       </button>

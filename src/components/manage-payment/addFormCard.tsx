@@ -73,84 +73,89 @@ export const AddFormCard = ({ account_id }: Props) => {
   }, [formValues, dataCard])
 
   return (
-    <ContainerCard className='flex flex-col items-center w-full '>
-      <div className='py-4 px-[8px] w-full'>
+    <ContainerCard className='flex flex-col items-center justify-center w-full '>
+      <div className='py-4 px-[8px] w-full lg:flex lg:flex-col lg:items-center lg:justify-center'>
         <MaskedCard dataCard={dataCard} />
-        <div className='w-full mt-[30px]'>
+        <div className='w-full mt-[30px] lg:flex lg:flex-col lg:items-center lg:justify-center'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className='w-full flex flex-col gap-5'>
-              <InputForm
-                type='number'
-                id='number_id'
-                placeholder='Número de tarjeta*'
-                noBorder={true}
-                className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
-                onInput={(e) => {
-                  const target = e.target as HTMLInputElement
-                  if (target.value.length > 16) {
-                    target.value = target.value.slice(0, 16)
-                  }
-                }}
-                {...register('number_id', {
-                  required: true,
-                  maxLength: 16,
-                })}
-              />
-              {errors.number_id && (
-                <span className='text-red-500 text-[12px]'>
-                  {errors.number_id.message}
-                </span>
-              )}
+              <div className='flex flex-col gap-4 xl:flex-row xl:gap-16'>
+                <InputForm
+                  type='number'
+                  id='number_id'
+                  placeholder='Número de tarjeta*'
+                  noBorder={true}
+                  className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
+                  onInput={(e) => {
+                    const target = e.target as HTMLInputElement
+                    if (target.value.length > 16) {
+                      target.value = target.value.slice(0, 16)
+                    }
+                  }}
+                  {...register('number_id', {
+                    required: true,
+                    maxLength: 16,
+                  })}
+                />
+                {errors.number_id && (
+                  <span className='text-red-500 text-[12px]'>
+                    {errors.number_id.message}
+                  </span>
+                )}
 
-              <InputForm
-                type='text'
-                placeholder='Nombre y apellido*'
-                id='first_last_name'
-                noBorder={true}
-                className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
-                {...register('first_last_name', { required: true })}
-              />
-              {errors.first_last_name && (
-                <span className='text-red-500 text-[12px]'>
-                  {errors.first_last_name.message}
-                </span>
-              )}
+                <InputForm
+                  type='text'
+                  placeholder='Nombre y apellido*'
+                  id='first_last_name'
+                  noBorder={true}
+                  className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
+                  {...register('first_last_name', { required: true })}
+                />
+                {errors.first_last_name && (
+                  <span className='text-red-500 text-[12px]'>
+                    {errors.first_last_name.message}
+                  </span>
+                )}
+              </div>
 
-              <InputForm
-                type='text'
-                placeholder='Fecha de vencimiento*'
-                id='expiration_date'
-                noBorder={true}
-                className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
-                {...register('expiration_date', { required: true })}
-              />
-              {errors.expiration_date && (
-                <span className='text-red-500 text-[12px]'>
-                  {errors.expiration_date.message}
-                </span>
-              )}
+               <div className='flex flex-col gap-[14px] lg:flex-row xl:gap-16'>
+                <InputForm
+                  type='text'
+                  placeholder='Fecha de vencimiento*'
+                  id='expiration_date'
+                  noBorder={true}
+                  className='px-5  bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
+                  {...register('expiration_date', { required: true })}
+                />
+                {errors.expiration_date && (
+                  <span className='text-red-500 text-[12px]'>
+                    {errors.expiration_date.message}
+                  </span>
+                )}
 
-              <InputForm
-                type='number'
-                placeholder='Código de seguridad*'
-                id='cod'
-                noBorder={true}
-                className='px-5 bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
-                {...register('cod', { required: true })}
-              />
-              {errors.cod && (
-                <span className='text-red-500 text-[12px]'>
-                  {errors.cod.message}
-                </span>
-              )}
+                <InputForm
+                  type='number'
+                  placeholder='Código de seguridad*'
+                  id='cod'
+                  noBorder={true}
+                  className='px-5 bg-white rounded-[10px] shadow-md border border-[#d2ffec] justify-center items-center gap-2.5 inline-flex '
+                  {...register('cod', { required: true })}
+                />
+                {errors.cod && (
+                  <span className='text-red-500 text-[12px]'>
+                    {errors.cod.message}
+                  </span>
+                )}
+                
+                </div> 
 
-              <div className='mt-[10px]'>
+              <div className='mt-[10px] flex lg:justify-center xl:justify-end'>
                 <Button
                   type='submit'
                   state={isDataCardComplete ? 'default' : 'disabled'}
                   title='Continuar'
                   loading={isPending}
-                  className='py-2'
+                  className='py-2 max-w-[360px]'
                 />
               </div>
             </div>
