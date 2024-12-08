@@ -5,3 +5,8 @@ export interface Account {
   alias: string;
   available_amount: number;
 }
+
+export interface AccountData {
+  cvu: string;
+  alias: string;
+}
