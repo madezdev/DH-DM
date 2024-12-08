@@ -28,7 +28,7 @@ export const LoginForm = ({ isSignupSuccess }: LoginFormProps) => {
     try {
       const resp = await postLogin(updatedData)
       if (resp.token && !resp.error) {
-        setCookieClient({ name: 'authToken', value: resp.token, hours: 1 })
+        setCookieClient({ name: 'authToken', value: resp.token, hours: 24 })
         setValue(resp.token)
         router.push('/home')
       }

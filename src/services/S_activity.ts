@@ -1,16 +1,7 @@
 import { ActivityList } from '@/interfaces/I_Activity'
-import { httpGet } from './common/S_httpPost'
+import { axiosClient } from './common/axios.client'
 
-export async function getActivity( id: number, token: string, options = {} ): Promise<ActivityList> {
-  return httpGet( `/accounts/${ id }/activity`, token, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  } )
-    .then( ( data ) => data as ActivityList )
-    .catch( ( error ) => {
-      console.error( error )
-      throw error
-    } )
+export const getActivity = async ( accountId: number ) => {
+  const response = await axiosClient.get( `/accounts/${ accountId }/activity` )
+  return response.data as ActivityList
 }

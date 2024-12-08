@@ -1,10 +1,13 @@
-/* eslint-disable @typescript-eslint/unbound-method */
 'use client'
 import React, { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { IoSearch } from 'react-icons/io5'
 import { useDebouncedCallback } from 'use-debounce'
 
-export const Search = ({ placeholder }: { placeholder: string }) => {
+interface Props {
+  placeholder: string
+}
+
+export const Search = ({ placeholder }: Props) => {
   const searchParams = useSearchParams()
   const { replace } = useRouter()
   const pathname = usePathname()

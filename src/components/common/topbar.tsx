@@ -2,31 +2,25 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { getTokenFromCookie } from '@/utils/getTokenCookie'
-import { getAcountInfo } from '@/services/S_getAcountInfo'
-import { getUserInfo } from '@/services/S_user'
-import { Avatar, ButtonNavbar } from '../shared'
+// import { getAccount } from '@/services/S_getAcountInfo'
+import {  ButtonNavbar } from '../shared'
+// import { getUser } from '@/services/S_user'
 
 interface Props {
-  session: 'register' | 'login' | 'empty' | 'menu' | 'landing'
+  session: 'register' | 'login' | 'empty' | 'landing'
 }
 
 export const Topbar = async ({ session }: Props) => {
-  const token = await getTokenFromCookie()
-  const accountInfo = await getAcountInfo(token)
-  const { firstname, lastname } = await getUserInfo(
-    accountInfo.user_id,
-    token,
-    'user-info'
-  )
- 
+  // const accountInfo = await getAccount()
+  // const { firstname, lastname } = await getUser(accountInfo.user_id)
+
   return (
     <header
       className={clsx(
         `flex items-center justify-between p-4 h-[64px] px-[4vw] w-full fixed top-0 z-50`,
         {
           'bg-secondary':
-            session === 'login' || session === 'menu' || session === 'landing',
+            session === 'login' || session === 'landing',
           'bg-primary': session === 'empty' || session === 'register',
         }
       )}>
@@ -68,14 +62,6 @@ export const Topbar = async ({ session }: Props) => {
               outline={true}
             />
           </Link>
-        </div>
-      )}
-      {session === 'menu' && (
-        <div className='flex items-center gap-1'>
-          <Avatar
-            name={firstname}
-            lastname={lastname}
-          />
         </div>
       )}
     </header>

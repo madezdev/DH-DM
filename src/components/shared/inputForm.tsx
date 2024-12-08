@@ -9,7 +9,7 @@ import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
  */
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  type?: 'text' | 'email' | 'password' | 'number' | 'tel'
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'date'
   hasError?: boolean
   error?:
     | string
@@ -18,6 +18,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     | undefined
   className?: string
   noBorder?: boolean
+  props?: string
 }
 
 export const InputForm = forwardRef(function InputForm(
@@ -26,13 +27,13 @@ export const InputForm = forwardRef(function InputForm(
 ) {
   hasError = hasError || Boolean(error)
   return (
-    <div>
+    <div className='w-full'>
       <input
         type={type}
         ref={ref}
         {...props}
         className={clsx(
-          'text-[18px] px-2 h-[67px] w-[300px] lg:w-[328px] xl:w-[360px] rounded-lg text-black transition outline-none',
+          'text-[18px] px-4 py-3 w-full xl:w-[360px] rounded-lg text-black transition outline-none',
           className,
           {
             'border-primary  focus:outline-primary': !hasError && !noBorder,

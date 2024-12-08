@@ -1,12 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { CurrencyFormat } from '../shared'
-import { getTokenFromCookie } from '@/utils/getTokenCookie'
-import { getAcountInfo } from '@/services/S_getAcountInfo'
+import { getAccount } from '@/services/S_getAcountInfo'
 
 export const BalanceCard = async () => {
-  const token = await getTokenFromCookie()
-  const { available_amount } = await getAcountInfo(token)
+  const { available_amount } = await getAccount()
+ 
   return (
     <article className='bg-secondary w-full h-[160px] xl:h-[230px] rounded-lg px-7 py-4 flex flex-col justify-between sticky top-[80px] z-30'>
       <div className='flex items-center justify-end gap-x-2'>
