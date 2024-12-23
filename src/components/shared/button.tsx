@@ -32,7 +32,7 @@ export const Button = ({
       disabled={disabled}
       type={type}
       className={clsx(
-        `w-full py-4 px-8 flex items-center justify-center rounded-[8px] shadow-sm text-sm font-medium ${className}`,
+        `py-4 px-8 flex items-center justify-center rounded-[8px] shadow-sm ${className}`,
         {
           'bg-primary text-secondary': state === 'default' && !outline,
           'bg-transparent border-primary border text-primary':
@@ -48,7 +48,7 @@ export const Button = ({
         {loading ? (
           <CgSpinner className='animate-spin' />
         ) : (
-          <span className='font-bold button-2'>{title}</span>
+          <span className='button-2'>{title}</span>
         )}
         {icon}
       </div>

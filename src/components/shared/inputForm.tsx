@@ -30,7 +30,7 @@ export const InputForm = forwardRef(function InputForm(
     <div className='w-full'>
       <input
         type={type}
-        ref={ref}
+        ref={ref} 
         {...props}
         className={clsx(
           'text-[18px] px-4 py-3 w-full xl:w-[360px] rounded-lg text-black transition outline-none',

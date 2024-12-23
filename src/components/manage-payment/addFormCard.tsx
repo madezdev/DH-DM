@@ -118,7 +118,7 @@ export const AddFormCard = ({ account_id }: Props) => {
                 )}
               </div>
 
-               <div className='flex flex-col gap-[14px] lg:flex-row xl:gap-16'>
+              <div className='flex flex-col gap-[14px] lg:flex-row xl:gap-16'>
                 <InputForm
                   type='text'
                   placeholder='Fecha de vencimiento*'
@@ -146,8 +146,7 @@ export const AddFormCard = ({ account_id }: Props) => {
                     {errors.cod.message}
                   </span>
                 )}
-                
-                </div> 
+              </div>
 
               <div className='mt-[10px] flex lg:justify-center xl:justify-end'>
                 <Button
