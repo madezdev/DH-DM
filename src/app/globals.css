@@ -28,42 +28,35 @@ body {
   text-rendering: optimizeSpeed;
 }
 
+/* Replace custom @apply rules with proper Tailwind classes or configure them */
 .heading-1 {
-  font-size: 24px;
-  font-weight: 700;
+  @apply text-2xl font-semibold;
 }
 
 .heading-2 {
-  font-size: 20px;
-  font-weight: 700;
+  @apply text-xl font-semibold;
 }
 
 .heading-3 {
-  font-size: 16px;
-  font-weight: 700;
+  @apply text-lg font-semibold;
 }
 
 .heading-4 {
-  font-size: 14px;
-  font-weight: 700;
+  @apply text-base font-semibold;
 }
 
 .button-1 {
-  font-size: 14px;
-  font-weight: 700;
+  @apply text-base font-semibold;
 }
 
 .button-2 {
-  font-size: 16px;
-  font-weight: 700;
+  @apply text-lg font-bold;
 }
 
 .text-1 {
-  font-size: 14px;
-  font-weight: 400;
+  @apply text-base font-normal;
 }
 
 .text-2 {
-  font-size: 12px;
-  font-weight: 400;
+  @apply text-sm font-normal;
 }

@@ -1,10 +1,13 @@
-import { Container } from '@/components'
 import React from 'react'
-export default function BankTransferPage() {
-  
+import { BankData, Container } from '@/components'
+import { getAccount } from '@/services/S_getAcountInfo'
+
+
+export default async function BankTransferPage() {
+  const account = await getAccount()
   return (
     <Container title='Cargar dinero'>
-      <h1>Hello Page</h1>
+      <BankData  accountInfo={ account } />
     </Container>
   )
 }

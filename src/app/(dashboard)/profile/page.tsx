@@ -1,25 +1,29 @@
 import { BankData, Button, Container } from '@/components'
 import { ProfileData } from '@/components/profile'
 import { Profile } from '@/interfaces/I_Profile'
-import { getAcountInfo } from '@/services/S_getAcountInfo'
-import { getUserInfo } from '@/services/S_user'
+import { getAccount } from '@/services/S_getAcountInfo'
+import { getUser } from '@/services/S_user'
 import { getTokenFromCookie } from '@/utils/getTokenCookie'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
 export default async function ProfilePage() {
   const token = await getTokenFromCookie()
-  const accountInfo = await getAcountInfo(token)
+  if (!token) {
+    redirect('/login')
+  }
+  const accountInfo = await getAccount()
   const profileInfo: Profile = {
     id: accountInfo.user_id,
-    ...(await getUserInfo(accountInfo.user_id, token, 'user-info')),
+    ...(await getUser(accountInfo.user_id)),
   }
- 
+
   return (
     <Container title='Perfil'>
       <div className='flex flex-col justify-between gap-[20px] w-full'>
-        <ProfileData userInfo={ profileInfo } />
+        <ProfileData userInfo={profileInfo} />
         <Link href='/profile/manage-payment'>
           <Button
             title='Gestionar los medios de pago'
@@ -28,7 +32,7 @@ export default async function ProfilePage() {
             icon={<FaArrowRight />}
           />
         </Link>
-        <BankData accountInfo={ accountInfo } />
+        <BankData accountInfo={accountInfo} />
       </div>
     </Container>
   )

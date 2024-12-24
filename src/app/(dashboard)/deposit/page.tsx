@@ -18,7 +18,7 @@ export default function DepositMoneyPage() {
         <ContainerCard className='bg-secondary h-[122px] flex flex-col justify-center'>
           <RouterCard
             title={'Seleccionar Tarjeta'}
-            route='/deposit/select-card'
+            route='/deposit/card'
             icon={<CiCreditCard2 className='text-primary w-[40px] h-[40px]' />}
           />
         </ContainerCard>

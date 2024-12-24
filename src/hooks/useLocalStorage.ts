@@ -1,4 +1,3 @@
-'use client'
 import { useState, useEffect } from 'react'
 
 export default function useLocalStorage( key: string ) {
@@ -9,7 +8,7 @@ export default function useLocalStorage( key: string ) {
       const item = window.localStorage.getItem( key )
       if ( item ) {
         const initialValue = JSON.parse( item )
-        setStoredValue( initialValue.reverse() ?? "" )
+        setStoredValue( Array.isArray( initialValue ) ? initialValue.reverse() : initialValue ?? "" )
       } else {
         setStoredValue( "" )
       }

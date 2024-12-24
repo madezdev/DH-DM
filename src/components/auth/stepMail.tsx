@@ -26,10 +26,10 @@ export const StepMail = ({ onSubmit }: Props) => {
   })
 
   return (
-    <section className='flex flex-col items-center justify-center gap-4 w-full h-full'>
+    <section className='w-full  md:w-[360px] mx-auto overflow-y-hidden'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center justify-center gap-4 w-full h-full'>
+        className='flex flex-col items-center justify-center md:justify-start md:mt-[243px] gap-4 w-full h-full'>
         <h2 className='heading-2 text-white'>¡Hola! Ingresá tu e-mail</h2>
         <Controller
           name='email'
@@ -40,6 +40,7 @@ export const StepMail = ({ onSubmit }: Props) => {
               id='email'
               type='email'
               placeholder='Correo*'
+              className='h-[60px]'
               error={errors.email?.message}
             />
           )}
@@ -49,14 +50,14 @@ export const StepMail = ({ onSubmit }: Props) => {
           title='Continuar'
           state='default'
           disabled={false}
-          className='w-[300px] lg:w-[328px] xl:w-[360px] px-5 py-[20px]'
+          className=' px-5 py-[20px]'
         />
         <Button
           title='Crear cuenta'
           state='disabled'
           disabled={false}
           onClick={() => router.push('/signup')}
-          className='w-[300px] lg:w-[328px] xl:w-[360px] px-5 py-[20px]'
+          className='px-5 py-[20px]'
         />
       </form>
     </section>

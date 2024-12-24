@@ -21,10 +21,10 @@ export const StepPass = ({ onSubmit }: Props) => {
   })
 
   return (
-    <section className='flex flex-col items-center justify-center gap-4 w-full h-full'>
+    <section className='w-full h-full md:w-[360px] mx-auto'>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center gap-4 w-full'>
+        className='flex flex-col items-center justify-center md:justify-start md:mt-[243px] gap-4 w-full h-full'>
         <h1 className='heading-2 text-center text-white'>
           Ingresa tu contraseña
         </h1>
@@ -37,6 +37,7 @@ export const StepPass = ({ onSubmit }: Props) => {
               id='password'
               type='password'
               placeholder='Contraseña*'
+              className='h-[60px]'
               error={errors.password?.message}
             />
           )}

@@ -2,6 +2,6 @@
 import { cookies } from 'next/headers'
 
 export async function getTokenFromCookie() {
-  const token = cookies().get( 'authToken' )?.value || ''
+  const token = (await cookies()).get('authToken')?.value || ''
   return token
 }
