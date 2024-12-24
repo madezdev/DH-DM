@@ -12,7 +12,7 @@ export const ListActivity = ({ activities, cantShowActivity }: Props) => {
     ? activities.slice(0, cantShowActivity)
     : []
   return (
-    <div className='flex flex-col gap-2 justify-center h-[236px] mt-4'>
+    <div className='flex flex-col gap-2 justify-center mt-4'>
       {showActivities?.map((item) => (
         <ActivityRow
           key={item.id}

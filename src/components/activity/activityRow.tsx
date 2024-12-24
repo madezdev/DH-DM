@@ -18,7 +18,7 @@ export const ActivityRow = ({ transfer, amount, date }: Props) => {
     <div className='flex justify-between items-center border-t pt-2 last:border-b last:pb-4'>
       <div className='flex items-center justify-center gap-x-2'>
         <div className='w-5 h-5 rounded-full bg-primary' />
-        <p className='text-[14px] md:text-[16px]'>{transfer}</p>
+        <p translate='yes'  className='text-[14px] md:text-[16px]'>{transfer}</p>
       </div>
       <div className='flex flex-col justify-center items-end'>
         <CurrencyFormat

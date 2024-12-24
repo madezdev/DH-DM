@@ -48,7 +48,7 @@ export const StepPass = ({ onSubmit }: Props) => {
           type='submit'
           state='default'
           disabled={false}
-          className='w-[300px] lg:w-[328px] xl:w-[360px] px-5 py-[20px]'
+          className='w-full lg:w-[328px] xl:w-[360px] px-5 py-[20px]'
         />
       </form>
     </section>
