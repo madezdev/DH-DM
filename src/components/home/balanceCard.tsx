@@ -7,7 +7,7 @@ export const BalanceCard = async () => {
   const { available_amount } = await getAccount()
  
   return (
-    <article className='bg-secondary w-full h-[160px] xl:h-[230px] rounded-lg px-7 py-4 flex flex-col justify-between sticky top-[80px] z-30'>
+    <article className='bg-secondary w-full h-[160px] xl:h-[230px] rounded-lg px-7 py-4 flex flex-col justify-between sticky top-[80px] z-40'>
       <div className='flex items-center justify-end gap-x-2'>
         <Link href={'/'}>
           <small className='text-white text-2 xl:text-[16px]'>Ver tarjetas</small>

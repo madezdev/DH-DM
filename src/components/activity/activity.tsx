@@ -17,11 +17,12 @@ interface Activity {
 
 export const Activity = ({ activities, cantShowActivity }: Props) => {
   return (
-    <div className='flex flex-col gap-5 mb-[20px] '>
+    <div className='flex flex-col gap-5 mb-[20px] z-20'>
       <Search placeholder='Buscar en tu actividad' />
       <Card
         title='Actividad'
-        nextTitlePage='Ver toda tu actividad'>
+        nextTitlePage='Ver toda tu actividad'
+      >
         <ListActivity
           activities={activities}
           cantShowActivity={cantShowActivity}
