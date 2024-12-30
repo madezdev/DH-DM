@@ -1,19 +1,21 @@
+'use client'
 import React from 'react'
 import { ActivityRow } from './activityRow'
-import { ActivityList } from '@/interfaces/I_Activity'
+import { ActivityItem } from '@/interfaces/I_Activity'
 
 interface Props {
-  activities: ActivityList
-  cantShowActivity?: number
+  activities: ActivityItem[]
+  numberOfActivity?: number
 }
 
-export const ListActivity = ({ activities, cantShowActivity }: Props) => {
+export const ListActivity = ({ activities, numberOfActivity }: Props) => {
   const showActivities = Array.isArray(activities)
-    ? activities.slice(0, cantShowActivity)
+    ? activities.slice(0, numberOfActivity)
     : []
+  const reverseActivities = showActivities.reverse()
   return (
     <div className='flex flex-col gap-2 justify-center mt-4'>
-      {showActivities?.map((item) => (
+      {reverseActivities?.map((item) => (
         <ActivityRow
           key={item.id}
           transfer={item.description}

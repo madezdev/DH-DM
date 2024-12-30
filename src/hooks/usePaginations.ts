@@ -12,7 +12,7 @@ export function usePagination<T>( items: T[], itemsPerPage: number ) {
     }
   }, [ totalPages, currentPage ] )
 
-  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfLastItem = currentPage * itemsPerPage 
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
   const currentItems = items.slice( indexOfFirstItem, indexOfLastItem )
 
