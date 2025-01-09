@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Activity,
   BalanceCard,
   Container,
   TransactionButtons,
@@ -23,7 +24,10 @@ export default async function HomePage() {
       <div className='flex flex-col gap-5 w-full h-full'>
         <BalanceCard />
         <TransactionButtons />
-        
+        <Activity
+          activities={activities}
+          cantShowActivity={10}
+        />
       </div>
     </Container>
   )
