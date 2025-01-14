@@ -6,9 +6,10 @@ import { ActivityItem } from '@/interfaces/I_Activity'
 interface Props {
   activities: ActivityItem[]
   numberOfActivity?: number
+  rowHeight?: 'short' | 'tall'
 }
 
-export const ListActivity = ({ activities, numberOfActivity }: Props) => {
+export const ListActivity = ({ activities, numberOfActivity, rowHeight }: Props) => {
   const showActivities = Array.isArray(activities)
     ? activities.slice(0, numberOfActivity)
     : []
@@ -21,6 +22,7 @@ export const ListActivity = ({ activities, numberOfActivity }: Props) => {
           transfer={item.description}
           amount={item.amount}
           date={item.dated}
+          rowHeight={rowHeight}
         />
       ))}
     </div>

@@ -5,9 +5,10 @@ interface Props {
   transfer: string
   amount: number
   date: string
+  rowHeight?: 'short' | 'tall'
 }
 
-export const ActivityRow = ({ transfer, amount, date }: Props) => {
+export const ActivityRow = ({ transfer, amount, date, rowHeight = 'short' }: Props) => {
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { weekday: 'long' }
     const date = new Date(dateString)
@@ -15,10 +16,17 @@ export const ActivityRow = ({ transfer, amount, date }: Props) => {
   }
 
   return (
-    <div className='flex justify-between items-center border-t pt-2 last:border-b last:pb-4'>
+    <div
+      className={`flex justify-between items-center border-t pt-2 last:border-b last:pb-4 ${
+        rowHeight === 'short' ? 'h-[56px]' : 'h-[96px]'
+      }`}>
       <div className='flex items-center justify-center gap-x-2'>
         <div className='w-5 h-5 rounded-full bg-primary' />
-        <p translate='yes'  className='text-[14px] md:text-[16px]'>{transfer}</p>
+        <p
+          translate='yes'
+          className='text-[14px] md:text-[16px]'>
+          {transfer}
+        </p>
       </div>
       <div className='flex flex-col justify-center items-end'>
         <CurrencyFormat

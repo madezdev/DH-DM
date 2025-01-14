@@ -9,7 +9,7 @@ interface Props {
   activities: ActivityItem[]
 }
 
-const NUMEBER_OF_ACTIVITY = 10
+const NUMEBER_OF_ACTIVITY = 20
 
 export const Activity = ({ activities }: Props) => {
   return (
