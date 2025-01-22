@@ -11,7 +11,7 @@ export default async function ActivityPage() {
     <Container title='Activity'>
       <div className='flex flex-col gap-5 mb-[20px] z-20'>
         <Search placeholder='Buscar en tu actividad' />
-        <ContainerActivities activities={activities} />
+        <ContainerActivities activities={activities} hasPagination hasOptionsActivity />
       </div>
     </Container>
   )
