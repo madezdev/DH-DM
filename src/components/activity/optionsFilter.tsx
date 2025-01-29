@@ -1,7 +1,7 @@
 'use client'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
-import { useFilterStore } from '@/store/filter.store' // Asegúrate de importar correctamente el store
+import { useFilterStore } from '@/store/filter.store'
 
 export const FILTER_OPTIONS = [
   { label: 'Hoy', value: 'today' },
@@ -12,15 +12,22 @@ export const FILTER_OPTIONS = [
   { label: 'Último año', value: 'lastYear' },
 ]
 
-export const OptionsFilter = () => {
-  const [selectedOption, setSelectedOption] = React.useState('')
+interface OptionsFilterProps {
+  selectedFilter: string
+  handleFilterChange: (e: ChangeEvent<HTMLInputElement>) => void
+  clearFilters?: () => void
+}
+
+export const OptionsFilter = ({
+  selectedFilter,
+  handleFilterChange,
+  clearFilters,
+}: OptionsFilterProps) => {
   const closeFilter = useFilterStore((state) => state.closeFilter) // Usamos el store para cerrar el filtro
 
-  const handleOptionChange = (value: string) => {
-    setSelectedOption(value)
-    console.log('Filter changed to:', value)
+  const handleOptionChange = () => {
+    //setSelectedOption(value)
 
-    // Cerramos el filtro después de 2 segundos
     setTimeout(() => {
       closeFilter()
     }, 1000)
@@ -35,10 +42,7 @@ export const OptionsFilter = () => {
         </span>
         <button
           className='text-1 text-black/50 '
-          onClick={() => {
-            console.log('clear filters')
-            setSelectedOption('') // Limpia la opción seleccionada
-          }}>
+          onClick={clearFilters}>
           Borrar filtros
         </button>
       </div>
@@ -49,14 +53,14 @@ export const OptionsFilter = () => {
             <div
               key={index}
               className='flex items-center gap-2 py-2 cursor-pointer'
-              onClick={() => handleOptionChange(option.value)}>
+              onClick={() => handleOptionChange()}>
               <input
                 type='radio'
                 name='filter'
                 id={option.value}
                 value={option.value}
-                checked={selectedOption === option.value}
-                onChange={() => handleOptionChange(option.value)}
+                checked={selectedFilter === option.value}
+                onChange={handleFilterChange}
               />
               <label htmlFor={option.value}>{option.label}</label>
             </div>

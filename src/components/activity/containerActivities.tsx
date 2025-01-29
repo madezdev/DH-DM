@@ -9,10 +9,11 @@ import { PiSlidersHorizontalLight } from 'react-icons/pi'
 import { ActivityItem } from '@/interfaces/I_Activity'
 import { ActivityRow } from './activityRow'
 import { OptionsFilter } from './optionsFilter'
+import { FaMoneyBillTransfer } from "react-icons/fa6";
+
 
 interface Props {
   activities: ActivityItem[]
-  hasOptionsActivity?: boolean
   hasPagination?: boolean
 }
 
@@ -20,10 +21,8 @@ const ITEMS_PER_PAGE = 10
 
 export const ContainerActivities = ({
   activities,
-  hasOptionsActivity,
   hasPagination,
 }: Props) => {
-
   const openFilter = useFilterStore((state) => state.openFilter)
   const closeFilter = useFilterStore((state) => state.closeFilter)
   const isOpenFilter = useFilterStore((state) => state.isOpenFilter)
@@ -31,20 +30,13 @@ export const ContainerActivities = ({
   const searchParams = useSearchParams()
   const queryParam = searchParams.get('query') || ''
 
-  console.log('Query parameter:', queryParam)
-  
   const filteredActivities = activities.filter((activity) =>
     activity.description.toLowerCase().includes(queryParam.toLowerCase())
   )
-  console.log('Search activity:', filteredActivities);
-  
 
   const {
     filteredActivityList,
-    searchInput,
     selectedFilter,
-    handleSearchInputChange,
-    handleSearchInputKeyDown,
     handleFilterChange,
     clearFilters,
   } = useFilteredActivity(filteredActivities)
@@ -57,14 +49,6 @@ export const ContainerActivities = ({
 
   return (
     <div>
-      {/* {hasOptionsActivity && (
-					<OptionsFilter
-						options={FILTER_OPTIONS}
-						selectedFilter={selectedFilter}
-						handleFilterChange={handleFilterChange}
-						clearFilters={clearFilters}
-					/>
-				)} */}
       <section className='w-full px-5 flex flex-col rounded-md bg-white text-black shadow-md md:p-10 xl:p-15'>
         <div className='h-[63px] flex justify-between items-center '>
           <span className='heading-3'>Tu actividad</span>
@@ -89,7 +73,11 @@ export const ContainerActivities = ({
               />
             ))
           ) : (
-            <li>No se encontraron actividades</li>
+            <div className='flex items-center gap-2 w-full justify-center mb-4'>
+              <span>No se encontraron actividades</span>
+              <FaMoneyBillTransfer/>
+
+            </div>
           )}
         </div>
 
@@ -124,25 +112,14 @@ export const ContainerActivities = ({
           <div
             className='w-full max-w-[330px] z-30'
             onClick={(e) => e.stopPropagation()}>
-            <OptionsFilter />
+            <OptionsFilter
+              selectedFilter={selectedFilter}
+              handleFilterChange={handleFilterChange}
+              clearFilters={clearFilters}
+            />
           </div>
         </div>
       )}
     </div>
-    // <article className={`w-full bg-[#FFF] rounded-lg shadow flex flex-col p-4`}>
-
-    //   {/* <div className='flex justify-between items-center'>
-    //     <h3 className='heading-2'>Actividad</h3>
-    //     <button
-    //       className='flex items-center gap-2 text-[#000]'
-    //       onClick={() => {
-    //         console.log('Click filtros')
-    //       }}>
-    //       <span className='button-3'>Filtros</span>
-    //       <PiSlidersHorizontalLight className='text-[20px]' />
-    //     </button>
-    //   </div> */}
-    //   {/* <ListActivity activities={currentItems} rowHeight={'tall'}/> */}
-    // </article>
   )
 }
