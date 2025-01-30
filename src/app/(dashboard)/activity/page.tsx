@@ -8,7 +8,7 @@ export default async function ActivityPage() {
   const account = await getAccount()
   const activities = await getActivity(account.id)
   return (
-    <Container title='Activity'>
+    <Container title='Activity' className='flex flex-col'>
       <div className='flex flex-col gap-5 mb-[20px] z-20'>
         <Search placeholder='Buscar en tu actividad' />
         <ContainerActivities activities={activities} hasPagination  />

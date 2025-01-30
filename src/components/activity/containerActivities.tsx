@@ -9,8 +9,7 @@ import { PiSlidersHorizontalLight } from 'react-icons/pi'
 import { ActivityItem } from '@/interfaces/I_Activity'
 import { ActivityRow } from './activityRow'
 import { OptionsFilter } from './optionsFilter'
-import { FaMoneyBillTransfer } from "react-icons/fa6";
-
+import { FaMoneyBillTransfer } from 'react-icons/fa6'
 
 interface Props {
   activities: ActivityItem[]
@@ -19,10 +18,7 @@ interface Props {
 
 const ITEMS_PER_PAGE = 10
 
-export const ContainerActivities = ({
-  activities,
-  hasPagination,
-}: Props) => {
+export const ContainerActivities = ({ activities, hasPagination }: Props) => {
   const openFilter = useFilterStore((state) => state.openFilter)
   const closeFilter = useFilterStore((state) => state.closeFilter)
   const isOpenFilter = useFilterStore((state) => state.isOpenFilter)
@@ -48,8 +44,8 @@ export const ContainerActivities = ({
   )
 
   return (
-    <div>
-      <section className='w-full px-5 flex flex-col rounded-md bg-white text-black shadow-md md:p-10 xl:p-15'>
+    <>
+      <section className='w-full min-h-[calc(100dvh-290px)] px-5 flex flex-col rounded-md bg-white text-black shadow-md mb-[60px]'>
         <div className='h-[63px] flex justify-between items-center '>
           <span className='heading-3'>Tu actividad</span>
           <button
@@ -61,7 +57,8 @@ export const ContainerActivities = ({
             <PiSlidersHorizontalLight className='text-[20px]' />
           </button>
         </div>
-        <div className='flex flex-col gap-5'>
+
+        <>
           {currentItems.length > 0 ? (
             currentItems.map((activity) => (
               <ActivityRow
@@ -73,13 +70,12 @@ export const ContainerActivities = ({
               />
             ))
           ) : (
-            <div className='flex items-center gap-2 w-full justify-center mb-4'>
+            <div className='flex items-center gap-2 w-full h-full justify-center mb-4 flex-1'>
               <span>No se encontraron actividades</span>
-              <FaMoneyBillTransfer/>
-
+              <FaMoneyBillTransfer />
             </div>
           )}
-        </div>
+        </>
 
         {hasPagination && totalPages > 1 && (
           <div className='flex justify-center my-5'>
@@ -120,6 +116,6 @@ export const ContainerActivities = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   )
 }
